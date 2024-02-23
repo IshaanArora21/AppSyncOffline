@@ -1,0 +1,25 @@
+service: graphql-test
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+
+custom:
+    serverless-offline:
+        httpPort: 4000
+        websocketPort: 4001
+        lambdaPort: 4002
+  
+plugins:
+  - serverless-offline  
+
+functions:
+  handle_graphql:
+    handler: presentation/handler.handle_graphql
+    timeout: 30
+    events:
+      - http:
+          path: api/handle_graphql
+          method: POST
+          cors : true

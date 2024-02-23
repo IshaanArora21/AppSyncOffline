@@ -1,0 +1,201 @@
+
+type User {
+  id: Int!
+  guid: String!
+  first_name: String!
+  last_name: String!
+  email: String!
+  password: String!
+  phone_no: String!
+  resume: String
+  portfolioURL: String
+  profilePicture: String
+  dt_created: String!
+  dt_modified: String!
+}
+
+type EducationalQualification {
+  id: Int!
+  guid: String!
+  aggregate_percentage: Float!
+  passing_year: Int!
+  degree: String!
+  stream: String!
+  college: String!
+  college_city: String!
+  dt_created: String!
+  dt_modified: String!
+}
+
+# type ProfessionalQualification {
+#   id: Int!
+#   guid: String
+#   applicant_type: String!
+#   appliedTest: Boolean!
+#   appliedTestRole: String
+#   familiarTechnologies: [Technology!]!
+#   experiencedQualification: ExperiencedQualification
+#   dt_created: String!
+#   dt_modified: String!
+# }
+
+# type ExperiencedQualification {
+#   id: Int!
+#   guid: String!
+#   experience_year: Int!
+#   currentCtc: String!
+#   expectedCtc: String!
+#   noticePeriod: Boolean!
+#   noticePeriodEnd: String
+#   noticePeriodDuration: Int
+#   dt_created: String!
+#   dt_modified: String!
+#   expertiseTechnologies: [Technology!]!
+# }
+
+# type Technology {
+#   id: Int!
+#   technologyName: String!
+#   dt_created: String!
+#   dt_modified: String!
+# }
+
+# type AppliedDrive {
+#   id: Int!
+#   guid: String!
+#   updatedResume: String
+#   timeSlot: TimeSlot!
+#   walkInDrive: WalkInDrive!
+#   preferredJobroles: [jobRoles!]
+#   dt_created: String!
+#   dt_modified: String!
+# }
+
+type JobRole {
+  id: Int!
+  guid: String!
+  job_title: String!
+  package: String!
+  job_description: String!
+  job_requirements: String!
+  dt_created: String!
+  dt_modified: String!
+}
+
+type TimeSlot {
+  id: Int!
+  slot_timmings: String!
+  dt_created: String!
+  dt_modified: String!
+}
+
+type WalkInDrive {
+  id: Int!
+  guid: String!
+  drive_title: String!
+  start_date: String!
+  end_date: String!
+  location: String!
+  job_Roles: [JobRole!]
+  timeSlots: [TimeSlot!]
+  dt_created: String!
+  dt_modified: String!
+}
+
+# input UserInput {
+#   id: Int!
+#   guid: String!
+#   first_name: String!
+#   last_name: String!
+#   email: String!
+#   password: String!
+#   phoneNo: String!
+#   resume: String!
+#   portfolioURL: String
+#   profilePicture: String
+#   dt_created: String!
+#   dt_modified: String!
+#   educationalQualifications: [EducationalQualificationInput!]!
+#   professionalQualifications: [ProfessionalQualificationInput!]!
+#   jobRoles: [JobRoleInput!]!
+# }
+
+# input EducationalQualificationInput {
+#   id: Int!
+#   guid: String!
+#   aggregate_percentage: Float!
+#   passingYear: Int!
+#   degree: String!
+#   stream: String!
+#   college: String!
+#   collegeCity: String!
+#   dt_created: String!
+#   dt_modified: String!
+# }
+
+# input ProfessionalQualificationInput {
+#   id: Int!
+#   guid: String
+#   applicantType: String!
+#   appliedTest: Boolean!
+#   appliedTestRole: String
+#   familiarTechnologies: [FamiliarTechnologyInput!]!
+#   experiencedQualification: ExperiencedQualificationInput
+#   dt_created: String!
+#   dt_modified: String!
+# }
+
+# input FamiliarTechnologyInput {
+#   id: Int!
+#   technologyName: String!
+#   dt_created: String!
+#   dt_modified: String!
+# }
+# input ExpertiseTechnologyInput {
+#   id: Int!
+#   technologyName: String!
+#   dt_created: String!
+#   dt_modified: String!
+# }
+# input ExperiencedQualificationInput {
+#   id: Int!
+#   guid: String!
+#   experience_year: Int!
+#   currentCtc: String!
+#   expectedCtc: String!
+#   noticePeriod: Boolean!
+#   noticePeriodEnd: String
+#   noticePeriodDuration: Int
+#   dt_created: String!
+#   dt_modified: String!
+#   expertiseTechnologies: [ExpertiseTechnologyInput!]!
+# }
+
+# input JobRoleInput {
+#   id: Int!
+#   guid: String!
+#   jobTitle: String!
+#   dt_created: String!
+#   dt_modified: String!
+# }
+
+# input applicationInput {
+#   userId: Int!
+#   walkInDriveId: Int!
+#   selectedTimeSlotId: Int!
+#   updatedResume: String!
+#   selectedJobRoleIds: [Int!]!
+#   guid: String!
+# }
+
+# type Mutation {
+#   createUser(input: UserInput!): User
+#   applyToDrive(applicationInput: applicationInput!): AppliedDrive
+# }
+
+type Query {
+  # users: [User]
+  # user: User
+  getAllUsers:User
+  getAllWalkInDrives: [WalkInDrive]
+}
