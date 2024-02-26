@@ -1,3 +1,29 @@
+# type Job {
+#   position: String
+#   location: String
+# }
+
+# type User {
+#   id: String
+#   name: String
+#   friends: [User]
+#   # job: Job
+# }
+
+# input UserInput {
+#   id: String!
+#   name: String!
+# }
+
+# type Mutation {
+#   createUser(input: UserInput!): User
+# }
+
+# type Query {
+#   users: [User]
+#   user: User
+#   getUserById(id: String): User
+# }
 
 type User {
   id: Int!
@@ -7,34 +33,34 @@ type User {
   email: String!
   password: String!
   phone_no: String!
-  resume: String
-  portfolioURL: String
-  profilePicture: String
+  resume: String!
+  portfolio_url: String
+  profile_pic: String
   dt_created: String!
   dt_modified: String!
 }
 
-type EducationalQualification {
-  id: Int!
-  guid: String!
-  aggregate_percentage: Float!
-  passing_year: Int!
-  degree: String!
-  stream: String!
-  college: String!
-  college_city: String!
-  dt_created: String!
-  dt_modified: String!
-}
+# type EducationalQualification {
+#   id: Int!
+#   guid: String!
+#   aggregate_percentage: Float!
+#   passing_year: Int!
+#   degree: String!
+#   stream: String!
+#   college: String!
+#   college_city: String!
+#   dt_created: String!
+#   dt_modified: String!
+# }
 
 # type ProfessionalQualification {
 #   id: Int!
 #   guid: String
 #   applicant_type: String!
-#   appliedTest: Boolean!
-#   appliedTestRole: String
+#   applied_test: Boolean!
+#   applied_test_role: String
 #   familiarTechnologies: [Technology!]!
-#   experiencedQualification: ExperiencedQualification
+#   experienced_qualification: ExperiencedQualification
 #   dt_created: String!
 #   dt_modified: String!
 # }
@@ -43,11 +69,11 @@ type EducationalQualification {
 #   id: Int!
 #   guid: String!
 #   experience_year: Int!
-#   currentCtc: String!
-#   expectedCtc: String!
-#   noticePeriod: Boolean!
-#   noticePeriodEnd: String
-#   noticePeriodDuration: Int
+#   current_ctc: String!
+#   expected_ctc: String!
+#   notice_period: Boolean!
+#   notice_period_end: String
+#   notice_period_duration: Int
 #   dt_created: String!
 #   dt_modified: String!
 #   expertiseTechnologies: [Technology!]!
@@ -55,7 +81,7 @@ type EducationalQualification {
 
 # type Technology {
 #   id: Int!
-#   technologyName: String!
+#   technology_name: String!
 #   dt_created: String!
 #   dt_modified: String!
 # }
@@ -63,30 +89,24 @@ type EducationalQualification {
 # type AppliedDrive {
 #   id: Int!
 #   guid: String!
-#   updatedResume: String
+#   updated_resume: String
 #   timeSlot: TimeSlot!
 #   walkInDrive: WalkInDrive!
 #   preferredJobroles: [jobRoles!]
 #   dt_created: String!
 #   dt_modified: String!
 # }
+type TimeSlot {
+  id: Int!
+  slot_timmings: String!
+}
 
 type JobRole {
-  id: Int!
-  guid: String!
+  id:Int!
   job_title: String!
   package: String!
   job_description: String!
   job_requirements: String!
-  dt_created: String!
-  dt_modified: String!
-}
-
-type TimeSlot {
-  id: Int!
-  slot_timmings: String!
-  dt_created: String!
-  dt_modified: String!
 }
 
 type WalkInDrive {
@@ -96,12 +116,11 @@ type WalkInDrive {
   start_date: String!
   end_date: String!
   location: String!
-  job_Roles: [JobRole!]
-  timeSlots: [TimeSlot!]
+  job_Roles: [JobRole]
+  time_Slots: [String]
   dt_created: String!
   dt_modified: String!
 }
-
 # input UserInput {
 #   id: Int!
 #   guid: String!
@@ -109,10 +128,10 @@ type WalkInDrive {
 #   last_name: String!
 #   email: String!
 #   password: String!
-#   phoneNo: String!
+#   phone_no: String!
 #   resume: String!
-#   portfolioURL: String
-#   profilePicture: String
+#   portfolio_url: String
+#   profile_pic: String
 #   dt_created: String!
 #   dt_modified: String!
 #   educationalQualifications: [EducationalQualificationInput!]!
@@ -124,11 +143,11 @@ type WalkInDrive {
 #   id: Int!
 #   guid: String!
 #   aggregate_percentage: Float!
-#   passingYear: Int!
+#   passing_year: Int!
 #   degree: String!
 #   stream: String!
 #   college: String!
-#   collegeCity: String!
+#   college_city: String!
 #   dt_created: String!
 #   dt_modified: String!
 # }
@@ -136,45 +155,40 @@ type WalkInDrive {
 # input ProfessionalQualificationInput {
 #   id: Int!
 #   guid: String
-#   applicantType: String!
-#   appliedTest: Boolean!
-#   appliedTestRole: String
-#   familiarTechnologies: [FamiliarTechnologyInput!]!
-#   experiencedQualification: ExperiencedQualificationInput
+#   applicant_type: String!
+#   applied_test: Boolean!
+#   applied_test_role: String
+#   familiarTechnologies: [TechnologyInput!]!
+#   experienced_qualification: ExperiencedQualificationInput
 #   dt_created: String!
 #   dt_modified: String!
 # }
 
-# input FamiliarTechnologyInput {
+# input TechnologyInput {
 #   id: Int!
-#   technologyName: String!
+#   technology_name: String!
 #   dt_created: String!
 #   dt_modified: String!
 # }
-# input ExpertiseTechnologyInput {
-#   id: Int!
-#   technologyName: String!
-#   dt_created: String!
-#   dt_modified: String!
-# }
+
 # input ExperiencedQualificationInput {
 #   id: Int!
 #   guid: String!
 #   experience_year: Int!
-#   currentCtc: String!
-#   expectedCtc: String!
-#   noticePeriod: Boolean!
-#   noticePeriodEnd: String
-#   noticePeriodDuration: Int
+#   current_ctc: String!
+#   expected_ctc: String!
+#   notice_period: Boolean!
+#   notice_period_end: String
+#   notice_period_duration: Int
 #   dt_created: String!
 #   dt_modified: String!
-#   expertiseTechnologies: [ExpertiseTechnologyInput!]!
+#   expertiseTechnologies: [TechnologyInput!]!
 # }
 
 # input JobRoleInput {
 #   id: Int!
 #   guid: String!
-#   jobTitle: String!
+#   job_title: String!
 #   dt_created: String!
 #   dt_modified: String!
 # }
@@ -188,14 +202,14 @@ type WalkInDrive {
 #   guid: String!
 # }
 
-# type Mutation {
-#   createUser(input: UserInput!): User
-#   applyToDrive(applicationInput: applicationInput!): AppliedDrive
-# }
+type Mutation {
+  # createUser(user:User):User
+}
 
 type Query {
-  # users: [User]
-  # user: User
-  getAllUsers:User
+  
+  getAllUsers:[User]
   getAllWalkInDrives: [WalkInDrive]
+  getWalkInDriveByGUID(guid:String!):WalkInDrive
+  getUserByGUID(guid:String!):User
 }
