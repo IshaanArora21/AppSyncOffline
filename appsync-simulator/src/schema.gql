@@ -40,51 +40,51 @@ type User {
   dt_modified: String!
 }
 
-# type EducationalQualification {
-#   id: Int!
-#   guid: String!
-#   aggregate_percentage: Float!
-#   passing_year: Int!
-#   degree: String!
-#   stream: String!
-#   college: String!
-#   college_city: String!
-#   dt_created: String!
-#   dt_modified: String!
-# }
+type EducationalQualification {
+  id: Int!
+  guid: String!
+  aggregate_percentage: Float!
+  passing_year: Int!
+  degree: String!
+  stream: String!
+  college: String!
+  college_city: String!
+  dt_created: String!
+  dt_modified: String!
+}
 
-# type ProfessionalQualification {
-#   id: Int!
-#   guid: String
-#   applicant_type: String!
-#   applied_test: Boolean!
-#   applied_test_role: String
-#   familiarTechnologies: [Technology!]!
-#   experienced_qualification: ExperiencedQualification
-#   dt_created: String!
-#   dt_modified: String!
-# }
+type ProfessionalQualification {
+  id: Int!
+  guid: String
+  applicant_type: String!
+  applied_test: Boolean!
+  applied_test_role: String
+  familiarTechnologies: [Technology!]!
+  experienced_qualification: ExperiencedQualification
+  dt_created: String!
+  dt_modified: String!
+}
 
-# type ExperiencedQualification {
-#   id: Int!
-#   guid: String!
-#   experience_year: Int!
-#   current_ctc: String!
-#   expected_ctc: String!
-#   notice_period: Boolean!
-#   notice_period_end: String
-#   notice_period_duration: Int
-#   dt_created: String!
-#   dt_modified: String!
-#   expertiseTechnologies: [Technology!]!
-# }
+type ExperiencedQualification {
+  id: Int!
+  guid: String!
+  experience_year: Int!
+  current_ctc: String!
+  expected_ctc: String!
+  notice_period: Boolean!
+  notice_period_end: String
+  notice_period_duration: Int
+  dt_created: String!
+  dt_modified: String!
+  expertiseTechnologies: [Technology!]!
+}
 
-# type Technology {
-#   id: Int!
-#   technology_name: String!
-#   dt_created: String!
-#   dt_modified: String!
-# }
+type Technology {
+  id: Int!
+  technology_name: String!
+  dt_created: String!
+  dt_modified: String!
+}
 
 # type AppliedDrive {
 #   id: Int!
@@ -117,99 +117,121 @@ type WalkInDrive {
   end_date: String!
   location: String!
   job_Roles: [JobRole]
+  dt_created: String!
+  dt_modified: String!
+  expiry:Int
+}
+type WalkInDriveByGUID{
+  id: Int!
+  guid: String!
+  drive_title: String!
+  start_date: String!
+  end_date: String!
+  location: String!
+  job_Roles: [JobRole]
   time_Slots: [String]
   dt_created: String!
   dt_modified: String!
+  expiry:Int
+  general_instructions:String
+  instuctions_for_exam:String
+  minimum_system_requirements:String
+  process:String
 }
-# input UserInput {
-#   id: Int!
-#   guid: String!
-#   first_name: String!
-#   last_name: String!
-#   email: String!
-#   password: String!
-#   phone_no: String!
-#   resume: String!
-#   portfolio_url: String
-#   profile_pic: String
-#   dt_created: String!
-#   dt_modified: String!
-#   educationalQualifications: [EducationalQualificationInput!]!
-#   professionalQualifications: [ProfessionalQualificationInput!]!
-#   jobRoles: [JobRoleInput!]!
-# }
 
-# input EducationalQualificationInput {
-#   id: Int!
-#   guid: String!
-#   aggregate_percentage: Float!
-#   passing_year: Int!
-#   degree: String!
-#   stream: String!
-#   college: String!
-#   college_city: String!
-#   dt_created: String!
-#   dt_modified: String!
-# }
+input personalInfo {
+  first_name: String!
+  last_name: String!
+  email: String!
+  password: String!
+  phone_no: String!
+  resume: String!
+  portfolio_url: String
+  profile_pic: String
+  preferred_Job_roles_id:[Int!]!
+}
 
-# input ProfessionalQualificationInput {
-#   id: Int!
-#   guid: String
-#   applicant_type: String!
-#   applied_test: Boolean!
-#   applied_test_role: String
-#   familiarTechnologies: [TechnologyInput!]!
-#   experienced_qualification: ExperiencedQualificationInput
-#   dt_created: String!
-#   dt_modified: String!
-# }
+input EducationalQualificationInput {
+  aggregate_percentage: Float!
+  passing_year: Int!
+  degree: String!
+  stream: String!
+  college: String!
+  college_city: String!
 
-# input TechnologyInput {
-#   id: Int!
-#   technology_name: String!
-#   dt_created: String!
-#   dt_modified: String!
-# }
+}
 
-# input ExperiencedQualificationInput {
-#   id: Int!
-#   guid: String!
-#   experience_year: Int!
-#   current_ctc: String!
-#   expected_ctc: String!
-#   notice_period: Boolean!
-#   notice_period_end: String
-#   notice_period_duration: Int
-#   dt_created: String!
-#   dt_modified: String!
-#   expertiseTechnologies: [TechnologyInput!]!
-# }
+input ProfessionalQualificationInput {
+  applicant_type: String!
+  applied_test: Boolean!
+  applied_test_role: String
+  familiarTechnologies: [Int!]!
+  experienced_qualification: ExperiencedQualificationInput
 
-# input JobRoleInput {
-#   id: Int!
-#   guid: String!
-#   job_title: String!
-#   dt_created: String!
-#   dt_modified: String!
-# }
+}
 
-# input applicationInput {
-#   userId: Int!
-#   walkInDriveId: Int!
-#   selectedTimeSlotId: Int!
-#   updatedResume: String!
-#   selectedJobRoleIds: [Int!]!
-#   guid: String!
-# }
+input TechnologyInput {
+  id: Int!
+  technology_name: String!
+}
+
+input ExperiencedQualificationInput {
+  experience_year: Int!
+  current_ctc: String!
+  expected_ctc: String!
+  notice_period: Boolean!
+  notice_period_end: String!
+  notice_period_duration: Int!
+  expertiseTechnologies: [Int!]!
+
+}
+input userInput{
+  personalInfo:personalInfo!
+  educationalQualification:EducationalQualificationInput!
+  professionalQualification:ProfessionalQualificationInput!
+  
+}
+
+
+input JobRoleInput {
+  id: Int!
+  guid: String!
+  job_title: String!
+}
+
+input applicationInput {
+  user_id: Int!
+  walk_in_drive_id: Int!
+  timeslot_id: Int!
+  updated_resume: String!
+  job_role_id: [Int!]!
+}
+type driveSuccess{
+  date:String!
+  timings:String!
+  location:String!
+}
+
+type UserCredentials{
+  first_name:String!
+  last_name:String!
+  email:String!
+}
+input LoginInput{
+  email:String!
+  password:String!
+}
 
 type Mutation {
-  # createUser(user:User):User
+  login(user:LoginInput!):UserCredentials!
+  applyDrive(applicantInput:applicationInput):driveSuccess
+  createUser(newUser:userInput):String
 }
 
 type Query {
   
   getAllUsers:[User]
   getAllWalkInDrives: [WalkInDrive]
-  getWalkInDriveByGUID(guid:String!):WalkInDrive
+  getWalkInDriveByGUID(guid:String!):WalkInDriveByGUID
   getUserByGUID(guid:String!):User
 }
