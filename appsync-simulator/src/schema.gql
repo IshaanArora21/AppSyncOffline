@@ -98,7 +98,7 @@ type Technology {
 # }
 type TimeSlot {
   id: Int!
-  slot_timmings: String!
+  slot_timings: String!
 }
 
 type JobRole {
@@ -117,9 +117,14 @@ type WalkInDrive {
   end_date: String!
   location: String!
   job_Roles: [JobRole]
+  time_Slots: [TimeSlot]
   dt_created: String!
   dt_modified: String!
   expiry:Int
+  general_instructions:String
+  instructions_for_exam:String
+  minimum_system_requirements:String
+  process:String
 }
 type WalkInDriveByGUID{
   id: Int!
@@ -129,12 +134,12 @@ type WalkInDriveByGUID{
   end_date: String!
   location: String!
   job_Roles: [JobRole]
-  time_Slots: [String]
+  time_Slots: [TimeSlot]
   dt_created: String!
   dt_modified: String!
   expiry:Int
   general_instructions:String
-  instuctions_for_exam:String
+  instructions_for_exam:String
   minimum_system_requirements:String
   process:String
 }
@@ -150,7 +155,27 @@ input personalInfo {
   profile_pic: String
   preferred_Job_roles_id:[Int!]!
 }
+input HallTicketInput{
+  user_id:Int!
+  job_role_id:Int!
+  walk_in_drive_id:Int!
+  timeslot_id:Int!
+}
 
+type HallTicketOutput{
+  user_id:Int!
+  slot_timings:String!
+  job_title:String!
+  walk_in_drive_id:Int!
+  company_name:String!
+  address_line_1:String!
+  area:String!
+  pincode:String!
+  things_to_remember:String!
+  phone:String!
+  city:String!
+  start_date:String!
+}
 input EducationalQualificationInput {
   aggregate_percentage: Float!
   passing_year: Int!
@@ -180,8 +205,8 @@ input ExperiencedQualificationInput {
   current_ctc: String!
   expected_ctc: String!
   notice_period: Boolean!
-  notice_period_end: String!
-  notice_period_duration: Int!
+  notice_period_end: String
+  notice_period_duration: Int
   expertiseTechnologies: [Int!]!
 
 }
@@ -213,9 +238,12 @@ type driveSuccess{
 }
 
 type UserCredentials{
+  id:Int!
+  guid:String!
   first_name:String!
   last_name:String!
   email:String!
+  jwt_token:String!
 }
 input LoginInput{
   email:String!
@@ -223,15 +251,15 @@ input LoginInput{
 }
 
 type Mutation {
-  login(user:LoginInput!):UserCredentials!
-  applyDrive(applicantInput:applicationInput):driveSuccess
+
+  applyDrive(applicantInput:applicationInput):String
   createUser(newUser:userInput):String
 }
 
 type Query {
-  
-  getAllUsers:[User]
+  login(user:LoginInput!):UserCredentials!
   getAllWalkInDrives: [WalkInDrive]
   getWalkInDriveByGUID(guid:String!):WalkInDriveByGUID
-  getUserByGUID(guid:String!):User
+  getHallTicket(hallticket:HallTicketInput!):HallTicketOutput
+  authenticateUser(jwt_token:String!):UserCredentials!
 }

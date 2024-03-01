@@ -12,14 +12,6 @@ export const resolversConfig: (AppSyncSimulatorPipelineResolverConfig | AppSyncS
     {
         kind: RESOLVER_KIND.UNIT,
         typeName: "Query",
-        fieldName: "getAllUsers",
-        dataSourceName: "LambdaDataSource",
-        requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
-        responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
-    },
-    {
-        kind: RESOLVER_KIND.UNIT,
-        typeName: "Query",
         fieldName: "getWalkInDriveByGUID",
         dataSourceName: "LambdaDataSource",
         requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
@@ -28,14 +20,6 @@ export const resolversConfig: (AppSyncSimulatorPipelineResolverConfig | AppSyncS
     {
         kind: RESOLVER_KIND.UNIT,
         typeName: "Query",
-        fieldName: "getUserByGUID",
-        dataSourceName: "LambdaDataSource",
-        requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
-        responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
-    },
-    {
-        kind: RESOLVER_KIND.UNIT,
-        typeName: "Mutation",
         fieldName: "login",
         dataSourceName: "LambdaDataSource",
         requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
@@ -57,4 +41,20 @@ export const resolversConfig: (AppSyncSimulatorPipelineResolverConfig | AppSyncS
         requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
         responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
     },
+    {
+        kind: RESOLVER_KIND.UNIT,
+        typeName: "Query",
+        fieldName: "getHallTicket",
+        dataSourceName: "LambdaDataSource",
+        requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
+        responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
+    },
+    {
+        kind: RESOLVER_KIND.UNIT,
+        typeName: "Query",
+        fieldName: "authenticateUser",
+        dataSourceName: "LambdaDataSource",
+        requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
+        responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
+    }
 ]
